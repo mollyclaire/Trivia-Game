@@ -31,25 +31,40 @@ var questionList = [
 
 // User clicks "Start" button to begin
 
+
 // Function to display questions and answer choices
-var currentquestion = 0;
+// var currentquestion = 0;
+// function displayQuestion() {
+//     $("#question").text(questionList[currentquestion].question);
+//     var options = questionList[currentquestion].answers;
+//     console.log(options);
+//     for (var i = 0; i < options.length; i++) {
+//     console.log(questionList[currentquestion].answers[i]);
+//   }
+
+//     }
+var currentQuestion = 0;
 function displayQuestion() {
-    $("#question").text(questionList[currentquestion].question);
-    var options = questionList[currentquestion].choices;
-    console.log(options);
-    for (var i = 0; i < options.length; i++) {
-    console.log(questionList[currentquestion].choices[i]);
-  }
+    let q = questionList[currentQuestion].question;
+
+        console.log(q);
+    let a = questionList[currentQuestion].answers;
+    
+        $("#question").text(q);
+        $("#answers").text(a);
 
     }
+    displayQuestion();
 
 // Create function for a 30 sec timer that applies to only one question
-setTimeout(function() {thirtySeconds(), 30000;})
-function thirtySeconds() {
-    $("#timer").append("Time remaining: " + thirtySeconds)
-  }
 
-
+var sec = 30
+var timer = setInterval(function() {
+   $('#timer').text(sec--);
+   if (sec == -1) {
+      clearInterval(timer);
+   }
+}, 1000);
 
 // User clicks on an answer
     // If it's wrong...
