@@ -29,8 +29,16 @@ var questionList = [
     }
 ];
 
-// User clicks "Start" button to begin
+// Global variables
+var correctAnswer;
+var correct = 0;
+var incorrect = 0;
+var unanswered; 
 
+// User clicks "Start" button to begin
+var startButton = $('<input/>').attr({ type: 'button', name:'btn1', value:'a button' });
+$("#start").append(startButton);
+startButton.text("Start");
 
 // Function to display questions and answer choices
 // var currentquestion = 0;
