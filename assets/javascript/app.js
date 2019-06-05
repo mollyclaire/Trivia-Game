@@ -43,7 +43,14 @@ function displayQuestion() {
 
     }
 
-// Include timer that applies to only one question
+// Create function for a 30 sec timer that applies to only one question
+setTimeout(function() {thirtySeconds(), 30000;})
+function thirtySeconds() {
+    $("#timer").append("Time remaining: " + thirtySeconds)
+  }
+
+
+
 // User clicks on an answer
     // If it's wrong...
         // The text where the question and answers is replaced with "Incorrect!," the correct answer, and an image
