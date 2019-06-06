@@ -33,7 +33,6 @@ $(document).ready(function () {
     var correct = 0;
     var incorrect = 0;
     var currentQuestion = 0;
-    var correctAnswer;
     var intervalID;
     var isQuestionDisplayed = false;
 
@@ -78,8 +77,8 @@ $(document).ready(function () {
     function answerCorrectly() {
         isQuestionDisplayed = false;
         clearInterval(intervalID);
-        $("#quiz").html("Correct!")
         correct++;
+        $("#quiz").html("Correct! " + "You've answered: " + correct + " correctly and " + incorrect + " incorrectly.");
         questionTimer(5);
         
     }
@@ -88,8 +87,8 @@ $(document).ready(function () {
     function answerIncorrectly() {
         isQuestionDisplayed = false;
         clearInterval(intervalID);
-        $("#quiz").html("Incorrect!")
         incorrect++;
+        $("#quiz").html("Sorry, that's not right! " + "You've answered: " + correct + " correctly and " + incorrect + " incorrectly.")
         questionTimer(5);
         
     }
