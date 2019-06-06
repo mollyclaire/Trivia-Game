@@ -34,21 +34,20 @@ var correct = 0;
 var incorrect = 0;
 var currentQuestion = 0;
 var correctAnswer;
+var timeRemaining = 25;
 
 // The questions and answer choices appear on the page
 function displayQuestion() {
-    
-    let q = questionList[currentQuestion].question;
+    var q = questionList[currentQuestion].question;
     $("#quiz").html("<h2>" + q + "</h2>");
-    
-       
-    let a = questionList[currentQuestion].answers;
+    var a = questionList[currentQuestion].answers;
     for (var i = 0; i < a.length; i++) {
         console.log(a);
         $("#quiz").append("<button class='answer-button' id='button' data-name='" + questionList[currentQuestion].answers[i]
         + "'>" + questionList[currentQuestion].answers[i] + "</button>");
     }
-
+    intervalID = setInterval(questionTimer, 500);
+    
 }
 
 // User clicks start button
@@ -61,6 +60,8 @@ $("#start-button").on("click", function() {
 $(document).on("click", ".answer-button", function(e) {
     clicked(e);
   })
+
+// Clicked answer functions which calculates whether the question is right or wrong -- NEED HELP HERE
 var clicked = function(e) {
     if ($(e.target).attr("data-name") === questionList[this.currentQuestion].correctAnswer) {
      // If it's the correct answer...
@@ -74,25 +75,37 @@ var clicked = function(e) {
 
 // answerCorrectly() function 
 function answerCorrectly() {
-    nextPage();
     $("#quiz").html("Correct!")
     correct++;
+    displayQuestion(); // After 5 sec
+    // I think I need to add currentQuestion++ here
 }
 
 // answerIncorrectly() function
 function answerIncorrectly() {
-    nextPage();
     $("#quiz").html("Incorrect!")
     incorrect++;
+    displayQuestion(); // After 5 sec
+    // I think I need to add currentQuestion++ here
 }
 
-// The next question is displayed and the timer resets
+// Function created by tutor... not sure why!
 function nextPage() {
     this.currentQuestion++
     displayQuestion();
 
 }
 
+// Question timer function
+function questionTimer() {
+    timeRemaining--;
+    $("#timer").text("Time remaining: " + timeRemaining);
+    if (timeRemaining === 0) {
+        clearInterval(intervalID);
+    }
+}
+
+// Delay timer function
 
 
 
