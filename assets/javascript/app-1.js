@@ -77,22 +77,24 @@ $(document).ready(function () {
     // answerCorrectly() function 
     function answerCorrectly() {
         isQuestionDisplayed = false;
+        clearInterval(intervalID);
         $("#quiz").html("Correct!")
         correct++;
         questionTimer(5);
-        // I think I need to add currentQuestion++ here
+        
     }
 
     // answerIncorrectly() function
     function answerIncorrectly() {
         isQuestionDisplayed = false;
+        clearInterval(intervalID);
         $("#quiz").html("Incorrect!")
         incorrect++;
         questionTimer(5);
-        // I think I need to add currentQuestion++ here
+        
     }
 
-    // Function created by tutor... not sure why!
+    // Function that will cycle through to the next question and answer set
     function nextPage() {
         currentQuestion++;
         displayQuestion();
