@@ -1,4 +1,4 @@
-$(document).ready(function() {
+
 
 // Create object with question and answers
 var questionList = [
@@ -38,33 +38,6 @@ var currentQuestion = 0;
 var sec = 30;
 var s = 5;
 
-
-
-// Create function for a 30 sec timer that applies to only one question
-var timerThirty = setInterval(function() {
-    $("#quiz").text(sec--);
-    if (sec == -1) {
-        clearInterval(timerThirty);
-    }
-    }, 30000);
-
-// Create function for a 5 sec timer that applies to the "score page"
-var timerFive = setInterval(function() {
-    $("#quiz").text(s--);
-    if (s == -1) {
-        clearInterval(timerFive);
-    }
-    }, 1000);
-
-// $("#start-button").on("click", function() {
-//     displayQuestion();
-//     // timerThirty();
-//   })
-
-  $(document).on("click", "#start-button", function() {
-    displayQuestion();
-  })
-
 // Display question and answer choices function
 function displayQuestion() {
     
@@ -72,8 +45,8 @@ function displayQuestion() {
     // for (var i = 0; i < q.length; i++) {
     //     console.log(q);
     // }
-    $("#quiz").html("<h1>" + q + "</h1>");
-
+    $("#quiz").html("<h2>" + q + "</h2>");
+    $("#question").text(q);
        
     let a = questionList[currentQuestion].answers;
     for (var i = 0; i < a.length; i++) {
@@ -82,36 +55,79 @@ function displayQuestion() {
         $("#quiz").append("<button class='answer-button' id='button' data-name='" + questionList[currentQuestion].answers[i]
         + "'>" + questionList[currentQuestion].answers[i] + "</button>");
     }
-    
-        $("#question").text(q);
-        timerThirty();
-        
 
-    }
+}
+
+
+// Create function for a 30 sec timer that applies to only one question
+// var timerThirty = setInterval(function() {
+//     $("#quiz").text(sec--);
+//     if (sec == -1) {
+//         clearInterval(timerThirty);
+//     }
+//     }, 30000);
+
+
+
+// Create function for a 5 sec timer that applies to the "score page"
+// var timerFive = setInterval(function() {
+//     $("#quiz").text(s--);
+//     if (s == -1) {
+//         clearInterval(timerFive);
+//     }
+//     }, 1000);
+
+// $("#start-button").on("click", function() {
+//     displayQuestion();
+//     // timerThirty();
+//   })
+
+$(document).ready(function() {
+
+// Click functions
+// Answer button
+$(document).on("click", ".answer-button", function(e) {
+    clicked(e);
+  })
+
+$("#start").on("click", function() {
+    displayQuestion();
+  })
+
+
 
 
 // What happens when a user clicks on an answer (30 sec timer stops, if the user selects the right answer or wrong answer)
 var clicked = function(e) {
-    clearInterval(timer);
+    // clearInterval(timer);
     if ($(e.target).attr("data-name") === questions[this.currentQuestion].correctAnswer) {
      answerCorrectly();
     }
     else {
       answerIncorrectly();
     }
+    nextQuestion();
   }
 
 // The next question is displayed and the timer resets
 function nextQuestion() {
     this.currentQuestion++
     displayQuestion();
-    timerFive();
+    // timerFive();
 }
 nextQuestion();
 
-// I still need to create the conditional for answerCorrectly() function {}
+// answerCorrectly() function {}
+function answerCorrectly() {
+    nextQuestion();
+    $("#quiz").html("Correct!")
+}
 
-// I still need to create the conditionals for answerIncorrectly() function{}
+// answerIncorrectly() function{}
+function answerCorrectly() {
+    nextQuestion();
+    $("#quiz").html("Incorrect!")
+}
 
 // Click functions
 // Answer button

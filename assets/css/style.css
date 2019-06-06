@@ -7,20 +7,44 @@ body {
     background-color: white;
     width: 960px;
     height: 500px;
-    margin: auto;
+    margin: 0 auto;
     position: relative;
 }
 
 h1 {
     text-align: center;
     margin-top: 50px;
-    padding: 30px;
+    padding: 50px;
+
 }
 
-#question {
+h2 {
+    text-align: center;
+}
+
+#quiz {
     margin: 0 auto;
     text-align: center;
-    padding: 10px;
+    padding: 50px;
+    max-width: 75%;
 
 }
 
+#start-button {
+    width: 200px;
+    height: 50px;
+    position: absolute;
+    left: 45%;
+    margin-left: -50px;
+    top: 50%;
+    margin-top: -50px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.answer-button {
+    width: 150px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 5px;
+}
