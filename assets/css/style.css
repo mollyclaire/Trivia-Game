@@ -1,5 +1,6 @@
 body {
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
+    background-image: url("../images/art-museum-background.jpg");
     font-family: sans-serif;
 }
 
@@ -9,6 +10,7 @@ body {
     height: 500px;
     margin: 0 auto;
     position: relative;
+    opacity: 0.90;
 }
 
 h1 {
@@ -47,6 +49,7 @@ h2 {
     height: 50px;
     margin: 10px;
     border-radius: 5px;
+    font-weight: bold;
 }
 
 #timer {
@@ -55,4 +58,30 @@ h2 {
     margin-left: -50px;
     top: 40%;
     margin-top: -50px;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 640px){
+    .container {
+        width: 100%
+        
+    }
+
+    #start-button {
+        position: absolute;
+        left: 45%;
+        margin-left: -60px;
+        top: 50%;
+        margin-top: -50px;
+
+    }
+
+    #quiz {
+        margin: 0 auto;
+        text-align: center;
+        padding: 30px;
+        max-width: 75%;
+    
+    }
 }
